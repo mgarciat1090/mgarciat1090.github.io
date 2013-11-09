@@ -1,0 +1,30 @@
+{
+  "name": "psysonik.github.io",
+  "version": "0.1.0",
+  "homepage": "https://github.com/psysonik/psysonik.github.io",
+  "authors": [
+    "psysonik <psysonik@gmail.com>"
+  ],
+  "description": "personal github page",
+  "main": "index.html",
+  "keywords": [
+    "personal",
+    "github",
+    "page"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "*",
+	"bootstrap-less": "~2.3.2"
+  },
+  "devDependencies": {
+  }
+}
