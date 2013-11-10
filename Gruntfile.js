@@ -13,13 +13,24 @@ module.exports = function(grunt) {
     // Task configuration.
 	less:{
 		development : {
-			options : {
-				paths: [".css"],
-				yuicompress : true
+			options:{
+				paths:["components/bootstrap-less/less/"],
+				require:['bootstrap.less'],
+				cleancss : true
 			},
 			files: {
-				"./css/style.css" : "./css/style.less"
+				"./css/main.css" : "./css/main.less"
 			}
+		}
+	},
+	copy:{
+		main: {
+			options: {
+                processContentExclude: ['bootstrap-less']
+            },
+			files: [
+				{expand : true,cwd:'bower_components/',src:['**'],dest:'components/',filter:'isFile'},
+			]	
 		}
 	},
     concat: {
@@ -82,10 +93,21 @@ module.exports = function(grunt) {
 		files: "./css/*.less",
 		tasks: ["less"]  
 	  }
-    }
+    },
+	devserver: {
+		options: {
+        'type': 'http',
+        'port': 8888,
+        'base': '',
+        'cache': 'no-cache',
+        'async': true
+      }
+	}
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-devserver');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -94,6 +116,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['copy','jshint', 'qunit', 'concat', 'uglify']);
 
 };

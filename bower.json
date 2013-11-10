@@ -23,8 +23,9 @@
   ],
   "dependencies": {
     "jquery": "*",
-	"bootstrap-less": "~2.3.2"
+    "bootstrap-less": "~2.3.2"
   },
   "devDependencies": {
+    "modernizr": "~2.6.2"
   }
 }
