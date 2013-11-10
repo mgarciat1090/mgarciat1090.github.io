@@ -14,8 +14,7 @@ module.exports = function(grunt) {
 	less:{
 		development : {
 			options:{
-				paths:["components/bootstrap-less/less/"],
-				require:['bootstrap.less'],
+				paths:["components/bootstrap/less/"],
 				cleancss : true
 			},
 			files: {

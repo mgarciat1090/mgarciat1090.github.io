@@ -1,1 +1,75 @@
-@import 'bootstrap.less'; 
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,700); 
+@import 'bootstrap.less';
+@header-height : 30px;
+@padding-section : 40px;
+@parallax-header-height : 200px;
+
+/*
+	HEADER
+*/
+.header-wrapper{
+	background: @brand-primary;
+	border-top: @brand-success-contrast 5px solid;
+}
+  
+.header{	
+	height: @header-height;
+}
+.navbar-brand{
+	span{
+		font-weight: bold;
+	}
+}
+
+.parallax-section-head{
+	height: @parallax-header-height;
+	background: url('../img/bg.jpg') no-repeat scroll 0 0 transparent;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.scene {
+  max-width: 500px;
+  height: 400px;
+  margin: 0 auto;
+  padding: 0;
+
+  img{
+  	width: 1920px;
+  	height: 400px;
+  	display:block;
+  }
+}
+
+.layer:nth-child(1) {
+  opacity: 0.15;
+}
+.layer:nth-child(2) {
+  opacity: 0.30;
+}
+.layer:nth-child(3) {
+  opacity: 0.45;
+}
+
+/*
+	MAIN CONTAINA!!
+*/
+.main-container{
+	padding-top: 30px;
+	.row{
+		padding-top: @padding-section;
+	}	
+} 
+
+.about-wrapper{
+	background: @brand-primary;	
+	margin-top: @padding-section;
+}
+
+.about-container{
+	padding-top: @padding-section;
+
+}

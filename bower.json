@@ -23,9 +23,11 @@
   ],
   "dependencies": {
     "jquery": "*",
-    "bootstrap-less": "~2.3.2"
+    "bootstrap": "*",
+    "parallax": "https://github.com/wagerfield/parallax"
   },
   "devDependencies": {
-    "modernizr": "~2.6.2"
+    "modernizr": "~2.6.2",
+    "parallax": "*"
   }
 }
