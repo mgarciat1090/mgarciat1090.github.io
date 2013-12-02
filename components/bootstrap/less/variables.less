@@ -13,14 +13,13 @@
 @gray-dark:              lighten(#000, 20%);   // #333
 @gray:                   lighten(#000, 33.5%); // #555
 @gray-light:             lighten(#000, 60%);   // #999
-@gray-lighter:           lighten(#000, 97%); // #eee
+@gray-lighter:           lighten(#000, 93.5%); // #eee
 
 // Brand colors
 // -------------------------
 
-@brand-primary:         #0e2a36;
-@brand-success:         #01bb8a;
-@brand-success-contrast: #f39c12;
+@brand-primary:         #428bca;
+@brand-success:         #5cb85c;
 @brand-warning:         #f0ad4e;
 @brand-danger:          #d9534f;
 @brand-info:            #5bc0de;
@@ -28,20 +27,20 @@
 // Scaffolding
 // -------------------------
 
-@body-bg:               @gray-lighter;
+@body-bg:               #fff;
 @text-color:            @gray-dark;
 
 // Links
 // -------------------------
 
-@link-color:            @brand-success;
+@link-color:            @brand-primary;
 @link-hover-color:      darken(@link-color, 15%);
 
 // Typography
 // -------------------------
 
-@font-family-sans-serif:  'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
-@font-family-serif:       'Source Sans Pro', Georgia, "Times New Roman", Times, serif;
+@font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
@@ -88,7 +87,7 @@
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:             0px;
+@border-radius-base:             4px;
 @border-radius-large:            6px;
 @border-radius-small:            3px;
 
@@ -380,8 +379,8 @@
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #FFF;
-@state-info-bg:                  @brand-success-contrast;
+@state-info-text:                #3a87ad;
+@state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
 @state-warning-text:             #c09853;
@@ -452,7 +451,7 @@
 
 // Alerts
 // -------------------------
-@alert-padding:               5px;
+@alert-padding:               15px;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
 

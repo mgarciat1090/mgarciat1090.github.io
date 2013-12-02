@@ -11,27 +11,27 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
-	less:{
-		development : {
-			options:{
-				paths:["components/bootstrap/less/"],
-				cleancss : true
-			},
-			files: {
-				"./css/main.css" : "./css/main.less"
-			}
-		}
-	},
-	copy:{
-		main: {
-			options: {
+  less:{
+    development : {
+      options:{
+        paths:["components/bootstrap/less/"],
+        cleancss : true
+      },
+      files: {
+        "./css/main.css" : "./css/main.less"
+      }
+    }
+  },
+  copy:{
+    main: {
+      options: {
                 processContentExclude: ['bootstrap-less']
             },
-			files: [
-				{expand : true,cwd:'bower_components/',src:['**'],dest:'components/',filter:'isFile'},
-			]	
-		}
-	},
+      files: [
+        {expand : true,cwd:'bower_components/',src:['**'],dest:'components/',filter:'isFile'},
+      ]
+    }
+  },
     concat: {
       options: {
         banner: '<%= banner %>',
@@ -88,20 +88,20 @@ module.exports = function(grunt) {
         files: '<%= jshint.lib_test.src %>',
         tasks: ['jshint:lib_test', 'qunit']
       },
-	  less:{
-		files: "./css/*.less",
-		tasks: ["less"]  
-	  }
+    less:{
+    files: "./css/*.less",
+    tasks: ["less"]
+    }
     },
-	devserver: {
-		options: {
+  devserver: {
+    options: {
         'type': 'http',
         'port': 8888,
         'base': '',
         'cache': 'no-cache',
         'async': true
       }
-	}
+  }
   });
 
   // These plugins provide necessary tasks.
