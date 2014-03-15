@@ -1,12 +1,12 @@
 $(document).ready(function(){
-    var width = window.innerWidth;
-    var height = window.innerHeight;
-    var renderer = new THREE.WebGLRenderer({
-        antialias: true
-    });
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var renderer = new THREE.WebGLRenderer({
+    antialias: true
+  });
 
-    renderer.setSize(width, height);
-    document.body.appendChild(renderer.domElement);
+  renderer.setSize(width, height);
+  document.body.appendChild(renderer.domElement);
       //renderer.setClearColorHex(0xffffff, 1.0);
       renderer.clear();
       var fov = 45; // camera field-of-view in degrees
@@ -17,12 +17,15 @@ $(document).ready(function(){
       camera.position.z = 300;
       var scene = new THREE.Scene();
 
+      var clock = new THREE.Clock();
+
+
       var backgroundTexture = THREE.ImageUtils.loadTexture('img/bg.jpg');
 
       var bg = new THREE.Mesh(
-          new THREE.PlaneGeometry(2, 2, 0),
-          new THREE.MeshBasicMaterial({map: backgroundTexture})
-          );
+        new THREE.PlaneGeometry(2, 2, 0),
+        new THREE.MeshBasicMaterial({map: backgroundTexture})
+        );
       bg.material.depthTest = false;
       bg.material.depthWrite = false;
       var bgScene = new THREE.Scene();
@@ -60,17 +63,17 @@ $(document).ready(function(){
 
         console.log( item, loaded, total );
 
-    };
+      };
 
-    var texture = new THREE.Texture();
+      var texture = new THREE.Texture();
 
-    var loader = new THREE.ImageLoader( manager );
-    loader.load( 'js/textures/psionic_receptor_by_sonikvisual-d54ybix.jpg', function ( image ) {
+      var loader = new THREE.ImageLoader( manager );
+      loader.load( 'js/textures/psionic_receptor_by_sonikvisual-d54ybix.jpg', function ( image ) {
 
         texture.image = image;
         texture.needsUpdate = true;
 
-    } );
+      } );
 
 
       // model
@@ -81,42 +84,66 @@ $(document).ready(function(){
 
         object.traverse( function ( child ) {
 
-            if ( child instanceof THREE.Mesh ) {
+          if ( child instanceof THREE.Mesh ) {
 
-                child.material.map = texture;
+            child.material.map = texture;
 
-            }
+          }
 
         } );
 
-        object.position.y =  1200;
+        object.position.x =  120;
+        object.position.y =  100;
         object.position.z =  300;
-        object.rotation.y =  100;
+        object.rotation.y =  30;
+        object.rotation.z =  0;
         scene.add( object );
 
-    } );
+      } );
 
 
+      var particles = new THREE.Geometry;
+
+      for(var p = 0; p < 2000; p++){
+        var particle = new THREE.Vector3(Math.random()*width*4-width*1.4, Math.random() * height*3, Math.random() * width*4-width*2);
+        particle.color = new THREE.Color().setHSL(30,120,230);
+        particles.vertices.push(particle);
+      }
+
+      var particleMaterial = new THREE.ParticleBasicMaterial({color: 0xeeeeee, size:2});
+
+      var particleSystem = new THREE.ParticleSystem(particles, particleMaterial);
+      scene.add(particleSystem);
 
 
       renderer.render(scene, camera);
       var paused = false;
       var last = new Date().getTime();
+
       function animate(t) {
         if (!paused) {
           last = t;
           camera.position.set(
             Math.sin(t/1000)*30, 3000, Math.atan(t/1000)*300);
+
+          var delta = clock.getDelta();
+          particleSystem.rotation.y += delta/5;
+          particleSystem.rotation.x += delta/5;
+
+
+
+
           renderer.autoClear = false;
           renderer.clear();
           renderer.render(bgScene, bgCam);
           camera.lookAt(scene.position);
           renderer.render(scene, camera);
-      }
-      window.requestAnimationFrame(animate, renderer.domElement);
-  };
-  animate(new Date().getTime());
-  onmessage = function(ev) {
-    paused = (ev.data == 'pause');
-};
-});
+        }
+        window.requestAnimationFrame(animate, renderer.domElement);
+      };
+
+      animate(new Date().getTime());
+      onmessage = function(ev) {
+        paused = (ev.data == 'pause');
+      };
+    });
