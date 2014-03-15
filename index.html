@@ -15,23 +15,47 @@ Cafeine Based Lifeform">
 
         <link rel="stylesheet" href="css/main.css">
         <script src="components/modernizr/modernizr.js"></script>
+        <script src="http://connect.soundcloud.com/sdk.js"></script>
+        <script src="https://w.soundcloud.com/player/api.js"></script>
+        
     </head>
     <body>
     <img src="http://th00.deviantart.net/fs71/200H/i/2012/089/9/6/abode_of_souls_by_sonikvisual-d4uh2yt.jpg" style="display:none">
-    <img src="img/bg.jpg" class="bg">
+    <div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="img/bg.jpg" class="bg">
+            </li>
 
-    <div class="container main-container">
+
+        </ul>
+    </div>
+    
+    <div class="fill-bar"></div>
+    <div data-0="transform:translate(0,0%);" data-100p="transform:translate(0,-100%);" class="container main-container">
       <div class="row">
-        <h1 class="col-sm-5 col-md-4 col-md-offset-3 clearfix"><span class="name-wrap">Martin</span>
-        <span class="lastname-wrap">Garcia</span></h1>
+        <h1 class="name col-sm-5 col-md-4 col-md-offset-3 clearfix">Martin
+        Garcia</h1>
+            <svg class="svg-logo-in" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" viewBox="0 0 130.7 133.7" enable-background="new 0 0 130.7 133.7" xml:space="preserve"><g>
+            <polygon class="blue" fill="#4EC2ED" points="10.6,36.3 64.7,5 118.9,36.3 118.9,98.8 64.7,130 10.6,98.8"/>
+            <polygon class="dark" fill="#1A1F23" points="21,42.3 64.7,17 108.5,42.3 108.5,92.8 64.7,118 21,92.8"/>
+            <polygon class="blue" fill="#4EC2ED" points="38.7,52.5 64.7,37.4 90.8,52.5 90.8,82.6 64.7,97.6 38.7,82.6"/>
+            <rect class="dark" x="36.5" y="59.5" transform="matrix(0.8542 0.5199 -0.5199 0.8542 38.9395 -18.0817)" fill="#1A1F23" width="30.5" height="1.9"/>
+            <polygon class="dark" fill="#1A1F23" points="65.7,99 63.8,99 63.8,67.8 90.3,51.7 91.3,53.3 65.7,68.9"/>
+            <rect class="blue" x="63.8" y="17" fill="#4EC2ED" width="1.9" height="22.5"/>
+            <rect class="blue" x="88.1" y="86.5" transform="matrix(0.8631 0.505 -0.505 0.8631 57.7212 -38.0587)" fill="#4EC2ED" width="21.8" height="1.9"/><rect x="29.3" y="76.6" transform="matrix(0.5056 0.8628 -0.8628 0.5056 90.3181 17.086)" fill="#4EC2ED" width="1.9" height="21.4"/>
+            <polygon class="blue" fill="#4EC2ED" points="52.5,60.5 64.7,53.4 76.9,60.5 76.9,74.6 64.7,81.6 52.5,74.6"/>
+            <path class="dark" fill="#1A1F23" d="M64.7 83.3l-13.7-7.9V59.6l13.7-7.9l13.7 7.9v15.8L64.7 83.3z M52.9 74.3l11.8 6.8l11.8-6.8V60.7l-11.8-6.8 l-11.8 6.8V74.3z"/></g>
+          </svg>
       </div>
       <div class="row">
-        <p class="col-sm-5 col-sm-4 col-md-offset-3 tagline">Digital Crafter, Audio Mad Scientist, <br />Cafeine Based Lifeform</p>
+        <p class="col-sm-5 col-sm-4 col-md-offset-3 tagline">Digital Crafter, Audio Mad Scientist, Cafeine Based Lifeform</p>
       </div>
+
     </div> <!-- /container -->
 
-    <div class="about-wrapper container">
-      <div class="alert alert-info col-sm-6 col-sm-5 col-md-offset-2">
+    <div data-0="transform:translate(0,100%);" data-100p="transform:translate(0,0%)" data-_box-100p="" data-_box-200p="transform:translate(0,-100%)"  class="about-wrapper container">
+      <div class="alert alert-info col-sm-6 col-sm-5 col-md-offset-3">
         <a href="https://github.com/psysonik" id="github">Github</a>
         <a href="http://www.behance.net/psysonik" id="behance">Behance</a>
         <a href="http://www.flickr.com/photos/69514712@N06/" id="flickr">Flickr</a>
@@ -44,13 +68,39 @@ Cafeine Based Lifeform">
       </div>
     </div>
 
+    <div data-_box-100p="transform:translate(0,100%);" data-_box-200p="transform:translate(0,0%);" class="row player">
+        <div class="player-holder">
+            <img src="img/synth_base.jpg">
+            <div id="sc-player" class="iframe-holder">
+            <iframe class="iframe"
+              width="100%"
+              height="465"
+              scrolling="no"
+              frameborder="no">
+            </iframe>
+                
+            </div>
+       </div>
+    </div>
+
+    <div data-_box-100p="transform:translate(0,100%);" data-_box-200p="transform:translate(0,0%);" class="row info">
+       <p>
+           José Martín García Trejo, Nacido en México D.F: el 13 de agosto de 1990
+interesado desde temprana edad en la creación de contenido audiovisual/multimedia.
+</p>
+<p>
+comienza a estudiar herramientas de producción gráfica desde los 16 años de manera autodidacta, y es en el año 2008 cuando comienza una carrera en el área de ciencias computacionales por parte de la Universidad Autónoma de Zacatecas, con el motivo de lograr conocer los aspectos matemáticos y técnicos necesarios para la elaboración y manipulación de contenido interactivo, donde logra además certificarse en diversas áreas de desarrollo y programación (Microsoft Certified MCTS Web Developer, OCJP JAVA Programmer)
+en este transcurso de tiempo logra desarrollar diversos conceptos gráficos para presentarse en diversos eventos de música electrónica en Guanajuato, Aguascalientes y Zacatecas) así como colaborar para diseño de portadas para el sello discográfico alemán Plusquam Records.
+</p>
 
 
+</p>
+
+       </p>
+    </div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="components/threejs/build/three.min.js"></script>
-        <script src="js/OBJLoader.js"></script>
-        <script src="js/retractor.js"></script>
-        <script src="js/particler.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/main.js"></script>
     </body>
 </html>

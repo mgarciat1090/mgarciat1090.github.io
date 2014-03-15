@@ -1,20 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,200,700);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,900,700);
 @import url(http://fonts.googleapis.com/css?family=Advent+Pro);
+@import url(http://fonts.googleapis.com/css?family=Sanchez);
+
 @import 'bootstrap.less';
+@import 'flexslider.css';
+
 @header-height : 30px;
 @padding-section : 40px;
 @parallax-header-height : 200px;
-@clear-desaturated-blue : #919498;
+@clear-desaturated-blue : #21e2ff;
 
 /*
 	HEADER
 */
 body{
-  font-family: "Roboto",helvetica,arial,"sans-serif";
+  font-family: "Sanchez",helvetica,arial,"sans-serif";
 }
 h1{
-  font-family: "Roboto",helvetica,arial,"sans-serif";
+  font-family: "Sanchez",helvetica,arial,"sans-serif";
   font-weight: 900;
   text-transform: uppercase;
   display: block;
@@ -23,25 +27,127 @@ h1{
   padding: 0;
 
 }
+
+ .fill-bar{
+    position: absolute;
+    height: 1px;
+    width: 0px;
+    background-color: #4ec2ed; 
+    display: block;
+    
+    .transition-property(width);
+    .transition-duration(1.2s);
+
+    &.expanded{
+       width: 100%;
+    }
+
+ }
+
+
 .name-wrap{
   display: block;
   float: right;
   font-size: 72px;
 }
-.lastname-wrap{
-  font-family: "Advent Pro",helvetica,arial,"sans-serif";
+.name{
+  font-family: "Sanchez",helvetica,arial,"sans-serif";
   font-weight: 400;
-  display: block;
-  float: right;
-  clear: right;
-  font-size: 48px;
+  text-align: right;
+  padding: 0;
+  font-size: 60px;
+  border: none;
+  background: #041d26;
+  min-height: 75px;
+  height: auto;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 15px;
+  .opacity(.8);
+
 
 }
 .tagline{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   text-align: right;
-  color: @clear-desaturated-blue;
+  color: white;
+  border: none;
+  background-color:rgba(82,95,102,0.5);
+  height: auto;
+  overflow: hidden;
 }
 
+svg{
+  cursor: pointer;
+  width: 120px;
+  height: 120px;
+  margin-top: 8px;
+  .transition(all 1s ease-in-out);
+
+  .blue{
+    fill: #21e2ff;
+  }
+
+  &:hover{
+
+    .scale(0.8);
+   
+  }
+
+}
+
+.box {
+  position:absolute;
+  left:0;
+  height:100%;
+  background:#09f;
+}
+
+.player{
+  height: 350px;
+}
+
+.player-holder{
+  position: relative;
+  width: 490px;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  left: -48px;
+
+  img{
+    display: block;
+    position: absolute;
+    z-index: 100;
+  }
+  .iframe-holder{
+    position: relative;
+    left: 1%;
+    width: 100%;
+    height: 30%;
+    margin-top: 6%;
+
+  }
+  iframe{
+    display: block;
+    position: relative;
+    z-index: 110;
+    width: 482px;
+    height: 174px;
+    top: 27px;
+  }
+  
+}
+
+.info{
+  display: none;
+  height: auto;
+
+  background: #4ec2ed;
+  padding: 100px;
+  font-size: 24px;
+  color: white;
+}
 .header{
 	height: @header-height;
 }
@@ -94,6 +200,8 @@ img {
 }
 
 .about-wrapper{
+  padding: 0;
+
 
   .alert{
     border: none;
@@ -101,6 +209,7 @@ img {
     min-height: 75px;
     height: auto;
     overflow: hidden;
+    border-radius: 0;
   }
 
   a{

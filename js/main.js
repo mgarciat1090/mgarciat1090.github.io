@@ -1,149 +1,80 @@
+var mult = 1;
+var count = 0;
+
 $(document).ready(function(){
-  var width = window.innerWidth;
-  var height = window.innerHeight;
-  var renderer = new THREE.WebGLRenderer({
-    antialias: true
+  SC.initialize({
+    client_id: "38d6d47852a0d5e30bdedc439090ba88"
   });
 
-  renderer.setSize(width, height);
-  document.body.appendChild(renderer.domElement);
-      //renderer.setClearColorHex(0xffffff, 1.0);
-      renderer.clear();
-      var fov = 45; // camera field-of-view in degrees
-      var aspect = width / height; // view aspect ratio
-      var near = 1; // near clip plane
-      var far = 10000; // far clip plane
-      var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
-      camera.position.z = 300;
-      var scene = new THREE.Scene();
+  var iframe = document.querySelector('.iframe');
 
-      var clock = new THREE.Clock();
+  var sc_url = 'https://w.soundcloud.com/player/?url=https://soundcloud.com/maquinal/';
+  iframe.src = sc_url;
 
+    var widget = SC.Widget(iframe);
 
-      var backgroundTexture = THREE.ImageUtils.loadTexture('img/bg.jpg');
+  var eventKey, eventName;
 
-      var bg = new THREE.Mesh(
-        new THREE.PlaneGeometry(2, 2, 0),
-        new THREE.MeshBasicMaterial({map: backgroundTexture})
-        );
-      bg.material.depthTest = false;
-      bg.material.depthWrite = false;
-      var bgScene = new THREE.Scene();
-      var bgCam = new THREE.Camera();
-      bgScene.add(bgCam);
-      bgScene.add(bg);
+  $(".svg-logo-in").click(function(){
+    widget.play();
+  });
 
-      var light = new THREE.SpotLight();
-      light.position.set( 170, 3300, -160 );
-      light.castShadow = true;
-      light.shadowMapWidth = 1024;
-      light.shadowMapHeight = 1024;
+  widget.bind(SC.Widget.Events.PLAY,function(e){
+    id = intervalTrigger();
+  });
 
-      light.shadowCameraNear = 500;
-      light.shadowCameraFar = 4000;
-      light.shadowCameraFov = 30;
-      scene.add(light);
+  widget.bind(SC.Widget.Events.FINISH,function(e){
 
-      var geometry = new THREE.RetractorGeometry();
-      geometry.init();
+    window.clearInterval(id);
+    $('.svg-logo-in').animate({
+        "width": 150
+    },time/2,'easeOutElastic');
+    
+  });
 
-      console.log(geometry);
+  widget.bind(SC.Widget.Events.PAUSE,function(e){
+    $('.svg-logo-in').animate({
+        "width": 150
+    },time/2,'easeOutElastic');
+    window.clearInterval(id);
+    
+  });
 
-      var litCube = new THREE.Mesh(
-        new THREE.CubeGeometry(50, 50, 50),
-        //geometry,
-        new THREE.MeshLambertMaterial({color: 0xffffff}));
-      litCube.position.y = 50;
-      //scene.add(litCube);
+});
 
-      // texture
+function intervalTrigger(){
+  return window.setInterval(function(){
+    $('.svg-logo-in').animate({
+        "width": (100 + (50 * mult) ) 
+    },time/2,'easeOutElastic');
 
-      var manager = new THREE.LoadingManager();
-      manager.onProgress = function ( item, loaded, total ) {
+    if(count % 4 === 0){
+      $('.svg-logo-in').animateRotate(90 * mult);  
+    }
+    
 
-        console.log( item, loaded, total );
-
-      };
-
-      var texture = new THREE.Texture();
-
-      var loader = new THREE.ImageLoader( manager );
-      loader.load( 'js/textures/psionic_receptor_by_sonikvisual-d54ybix.jpg', function ( image ) {
-
-        texture.image = image;
-        texture.needsUpdate = true;
-
-      } );
+    mult *= -1;
+    count++;
+  },time);
+};
+var id;
+var time = 1000;
 
 
-      // model
+$.fn.animateRotate = function(angle, duration, easing, complete) {
+    return this.each(function() {
+        var $elem = $(this);
 
-
-      var loader = new THREE.OBJLoader( manager );
-      loader.load( 'js/obj/renderabs01.obj', function ( object ) {
-
-        object.traverse( function ( child ) {
-
-          if ( child instanceof THREE.Mesh ) {
-
-            child.material.map = texture;
-
-          }
-
-        } );
-
-        object.position.x =  120;
-        object.position.y =  100;
-        object.position.z =  300;
-        object.rotation.y =  30;
-        object.rotation.z =  0;
-        scene.add( object );
-
-      } );
-
-
-      var particles = new THREE.Geometry;
-
-      for(var p = 0; p < 2000; p++){
-        var particle = new THREE.Vector3(Math.random()*width*4-width*1.4, Math.random() * height*3, Math.random() * width*4-width*2);
-        particle.color = new THREE.Color().setHSL(30,120,230);
-        particles.vertices.push(particle);
-      }
-
-      var particleMaterial = new THREE.ParticleBasicMaterial({color: 0xeeeeee, size:2});
-
-      var particleSystem = new THREE.ParticleSystem(particles, particleMaterial);
-      scene.add(particleSystem);
-
-
-      renderer.render(scene, camera);
-      var paused = false;
-      var last = new Date().getTime();
-
-      function animate(t) {
-        if (!paused) {
-          last = t;
-          camera.position.set(
-            Math.sin(t/1000)*30, 3000, Math.atan(t/1000)*300);
-
-          var delta = clock.getDelta();
-          particleSystem.rotation.y += delta/5;
-          particleSystem.rotation.x += delta/5;
-
-
-
-
-          renderer.autoClear = false;
-          renderer.clear();
-          renderer.render(bgScene, bgCam);
-          camera.lookAt(scene.position);
-          renderer.render(scene, camera);
-        }
-        window.requestAnimationFrame(animate, renderer.domElement);
-      };
-
-      animate(new Date().getTime());
-      onmessage = function(ev) {
-        paused = (ev.data == 'pause');
-      };
+        $({deg: 0}).animate({deg: angle}, {
+            duration: duration,
+            easing: easing,
+            step: function(now) {
+                $elem.css({
+                    transform: 'rotate(' + now + 'deg)'
+                });
+            },
+            complete: complete || $.noop
+        });
     });
+};
+
