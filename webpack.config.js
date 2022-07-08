@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -8,13 +9,13 @@ module.exports = {
 
 	output: {
 		path: path.join(__dirname, 'build'),
-		filename: 'main.bundle.js'
+		filename: 'main.bundle.js',
 	},
 
 	mode: process.env.NODE_ENV || 'development',
 
 	resolve: {
-		extensions: ['.js','json', 'jsx'],
+		extensions: ['.js','json', 'jsx', 'scss'],
 		modules: [path.resolve(__dirname,'src'),'node_modules']
 	},
 
@@ -29,18 +30,35 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.(js|jsx)$/,
+				test: /\.js|jsx$/,
 				exclude: /node_modules/,
 				use: {
 					loader: "babel-loader"
 				}
-			}
+			},
+			{
+		        test: /\.s[ac]ss|css$/i,
+		        use: [
+		          // Creates `style` nodes from JS strings
+		          "style-loader",
+		          // Translates CSS into CommonJS
+		          "css-loader",
+		          // Compiles Sass to CSS
+		          "sass-loader",
+		          "postcss-loader"
+		        ],
+		      },
 		],
 	},
 	plugins: [
 	    new HtmlWebpackPlugin({
 	      template: 'src/index.html'
-	    })
+	    }),
+	    new CopyWebpackPlugin({
+            patterns: [
+                { from: 'src/assets' }
+            ]
+        })
 	],
 
 };

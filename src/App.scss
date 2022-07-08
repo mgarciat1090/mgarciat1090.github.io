@@ -1,0 +1,21 @@
+@import "~bootstrap/scss/bootstrap";
+
+
+.card-header{
+	background-image: url(./assets/img/background.jpg);
+    height: 230px;
+    display: block;
+    background-position: 0px -700px;
+}
+
+.card-body{
+	top: -200px;
+    display: block;
+    position: relative;
+}
+
+.card-profile-img{
+	border-radius: 200px;
+    box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+    margin-bottom: 10px;
+}
