@@ -48,7 +48,7 @@ const App = () => {
 			      <Card.Header backgroundURL={"./assets/img/background.jpg"} />
 			      <Card.Body className="text-center">
 
-			        <img className="card-profile-img" alt="Profile" src={"./assets/img/profile.jpg"} />;
+			        <img className="card-profile-img" alt="Profile" src={"./img/profile.jpg"} />;
 			        
 			        <h3>Martín García</h3>
 
