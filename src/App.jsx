@@ -60,7 +60,7 @@ const App = () => {
 
 			        <img className="card-profile-img" alt="Profile" src={"./img/profile.jpg"} />;
 			        
-			        <h3>I'am <b className="color">Martín García</b></h3>
+			        <h3>I'm <b className="color">Martín García</b></h3>
 
 			        <p className="mb-4"><Bio></Bio></p>
 
