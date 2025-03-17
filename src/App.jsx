@@ -1,5 +1,5 @@
 import React from "react";
-import './App_style.scss';
+import './assets/css/style.scss';
 import { Navbar, 
 		Nav,  
 		Alert, 
