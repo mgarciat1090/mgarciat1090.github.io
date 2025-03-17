@@ -38,9 +38,9 @@ const App = () => {
 			    <Nav.Link href="#home">Stack</Nav.Link>
 			    <Navbar.Toggle />
 			    <Navbar.Collapse className="justify-content-end">
-			      <Navbar.Text>
+			      {/* <Navbar.Text>
 			        Signed in as: <a href="#login">Mark Otto</a>
-			      </Navbar.Text>
+			      </Navbar.Text> */}
 			    </Navbar.Collapse>
 			  </Container>
 			</Navbar>
