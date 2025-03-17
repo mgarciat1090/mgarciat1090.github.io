@@ -1,11 +1,15 @@
 @import "~bootstrap/scss/bootstrap";
 
+body{
+    font-family: 'Karla', 'Courier New', Courier, monospace;
+}
 
 .card-header{
 	background-image: url(./assets/img/background.jpg);
     height: 230px;
     display: block;
     background-position: 0px -700px;
+    font-family: 'Karla', 'Courier New', Courier, monospace;
 }
 
 .card-body{
@@ -18,4 +22,17 @@
 	border-radius: 200px;
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
     margin-bottom: 10px;
+}
+
+.bio{
+    font-size: 16px;
+}
+h3{
+    font-weight: 300;
+}
+h3 b.color, b.blue{
+    color: #28B5B5;
+}
+.img-logo{
+    margin-right: 20px;   
 }
