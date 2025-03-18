@@ -22,6 +22,7 @@ body{
 	border-radius: 200px;
     box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
     margin-bottom: 10px;
+    width: 100%;
 }
 
 .bio{
@@ -35,4 +36,13 @@ h3 b.color, b.blue{
 }
 .img-logo{
     margin-right: 20px;   
+    margin-bottom: 20px;
 }
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 470px) {
+    .card-profile-img{
+        width: 300px;
+    }
+}
+

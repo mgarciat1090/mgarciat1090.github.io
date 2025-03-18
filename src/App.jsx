@@ -58,28 +58,30 @@ const App = () => {
 			      <Card.Header backgroundURL={"./assets/img/background.jpg"} />
 			      <Card.Body className="text-center">
 
-			        <img className="card-profile-img" alt="Profile" src={"./img/profile.jpg"} />
+							<div className="card-profile-bg">
+			        	<img className="card-profile-img" alt="Profile" src={"./img/profile.jpg"} />
+							</div>
 			        
 			        <h3>I'm <b className="color">Martín García</b></h3>
 
 			        <p className="mb-4"><Bio></Bio></p>
 
-							<a href="https://github.com/mgarciat1090" className="link to Github">
+							<a href="https://github.com/mgarciat1090" alt="link to Github">
 								<img className="img-logo" src="img/github.png" width={"40px"} alt="Github" />
 							</a>
-							<a href="https://www.behance.net/psysonik" className="link to Behance">
+							<a href="https://www.behance.net/psysonik" alt="link to Behance">
 								<img className="img-logo" src="img/behance.png" width={"40px"} alt="behance" />
 							</a>
-							<a href="https://www.instagram.com/mgarciat1090/" className="link to Instagram">
+							<a href="https://www.instagram.com/mgarciat1090/" alt="link to Instagram">
 								<img className="img-logo" src="img/instagram.png" width={"40px"} alt="instagram"/>
 							</a>
-							<a href="https://www.linkedin.com/in/mart%C3%ADn-garc%C3%ADa-4163097a/" className="link to Linkedin">
+							<a href="https://www.linkedin.com/in/mart%C3%ADn-garc%C3%ADa-4163097a/" alt="link to Linkedin">
 								<img className="img-logo" src="img/linkedin.png" width={"40px"} alt="Linkedin" />
 							</a>
-							<a href="https://open.spotify.com/user/1277285087" className="link to Spotify">
+							<a href="https://open.spotify.com/user/1277285087" alt="link to Spotify">
 								<img className="img-logo" src="img/spotify.png" width={"40px"} alt="Spotify" />
 							</a>
-							<a href="https://soundcloud.com/aexmachinum" className="link to SoundCloud">
+							<a href="https://soundcloud.com/aexmachinum" alt="link to SoundCloud">
 							<img className="img-logo" src="img/soundcloud-logo.png" width={"40px"} alt="SoundCloud" />
 							</a>
 
